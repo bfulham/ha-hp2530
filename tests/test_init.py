@@ -114,7 +114,13 @@ async def test_energy_accumulates(
     hass: HomeAssistant, mock_switch: Replay, config_entry: MockConfigEntry, clock: Clock
 ) -> None:
     await _setup(hass, config_entry)
-    assert float(hass.states.get("sensor.test_switch_port_5_poe_energy").state) == 0
+    for entity_id in ("sensor.test_switch_port_5_poe_energy", "sensor.test_switch_poe_energy"):
+        state = hass.states.get(entity_id)
+        assert float(state.state) == 0
+        # What the Energy dashboard needs to accept the sensor
+        assert state.attributes["device_class"] == "energy"
+        assert state.attributes["state_class"] == "total_increasing"
+        assert state.attributes["unit_of_measurement"] == "kWh"
 
     # 30 s later port 5 draws 7.125 W: the average of 6.875 and 7.125 is 7 W
     clock.now += 30

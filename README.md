@@ -86,7 +86,8 @@ panel, and the 24-port and non-PoE 2530G layouts follow HP's data sheets. Other
 hardware gets a generic two-row layout.
 
 The card is adapted from the netviz card in
-[gun4as/HP-HA](https://github.com/gun4as/HP-HA) (MIT).
+[gun4as/HP-HA](https://github.com/gun4as/HP-HA) (MIT; its notice is in
+`custom_components/hp2530/www/LICENSE.netviz`).
 
 ## Development
 

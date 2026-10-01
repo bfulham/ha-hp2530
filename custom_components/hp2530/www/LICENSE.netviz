@@ -1,6 +1,9 @@
+hp2530-faceplate-card.js in this directory is adapted from netviz-faceplate-card.js
+in https://github.com/gun4as/HP-HA, which is under the following licence.
+
 MIT License
 
-Copyright (c) 2026 Brady Fulham
+Copyright (c) 2026 gun4as
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -2,7 +2,7 @@
  * hp2530 faceplate card
  *
  * Adapted from netviz-faceplate-card.js in https://github.com/gun4as/HP-HA
- * Copyright (c) 2026 gun4as, MIT License (see LICENSE in this repository).
+ * Copyright (c) 2026 gun4as, MIT License (see LICENSE.netviz next to this file).
  * Changes: entities come from the hp2530 integration, link speed is read from
  * the link entity's attributes, PoE faults are drawn, wireless is removed.
  *
