@@ -10,5 +10,5 @@
   "issue_tracker": "https://github.com/bfulham/ha-hp2530/issues",
   "loggers": ["pyasn1", "pysnmp"],
   "requirements": ["pysnmp>=7.1.21"],
-  "version": "0.1.0"
+  "version": "0.1.1"
 }

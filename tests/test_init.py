@@ -5,6 +5,7 @@ from __future__ import annotations
 from unittest.mock import patch
 
 import pytest
+from homeassistant.components.frontend import DATA_EXTRA_MODULE_URL
 from homeassistant.config_entries import ConfigEntryState
 from homeassistant.core import HomeAssistant, State
 from homeassistant.helpers import device_registry as dr
@@ -13,6 +14,8 @@ from pytest_homeassistant_custom_component.common import (
     MockConfigEntry,
     mock_restore_cache_with_extra_data,
 )
+
+from custom_components.hp2530.const import CARD_URL
 
 from .conftest import HP_POE_POWER_PORT5, IF_HC_IN_PORT5, Replay
 
@@ -56,6 +59,10 @@ async def test_not_ready_when_silent(
     config_entry.add_to_hass(hass)
     await hass.config_entries.async_setup(config_entry.entry_id)
     assert config_entry.state is ConfigEntryState.SETUP_RETRY
+    # The card still loads on dashboards while the switch is unreachable
+    assert any(
+        url.startswith(CARD_URL) for url in hass.data[DATA_EXTRA_MODULE_URL].urls
+    )
 
 
 async def test_entities(

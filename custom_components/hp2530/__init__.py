@@ -69,6 +69,11 @@ async def _register_card(hass: HomeAssistant) -> None:
 async def async_setup_entry(hass: HomeAssistant, entry: Hp2530ConfigEntry) -> bool:
     from .config_flow import credentials
 
+    # Before the first poll: if the switch is unreachable at startup, setup is
+    # retried, and dashboards opened meanwhile would otherwise report the card
+    # as a custom element that does not exist.
+    await _register_card(hass)
+
     engine = await async_get_engine(hass)
     client = SnmpClient(credentials(dict(entry.data)), engine)
     coordinator = Hp2530Coordinator(
@@ -82,7 +87,6 @@ async def async_setup_entry(hass: HomeAssistant, entry: Hp2530ConfigEntry) -> bo
     await coordinator.async_config_entry_first_refresh()
     entry.runtime_data = coordinator
 
-    await _register_card(hass)
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     entry.async_on_unload(entry.add_update_listener(_async_reload))
     return True
