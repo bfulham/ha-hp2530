@@ -1,0 +1,142 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "HP 2530 switch",
+        "description": "Address and SNMP settings of the switch. Only read access is used.",
+        "data": {
+          "host": "Host",
+          "port": "Port",
+          "snmp_version": "SNMP version",
+          "community": "Community"
+        },
+        "data_description": {
+          "host": "IP address or hostname of the switch.",
+          "community": "Read community for SNMP v2c. Ignored for v3."
+        }
+      },
+      "v3": {
+        "title": "SNMPv3 credentials",
+        "data": {
+          "username": "Username",
+          "auth_protocol": "Authentication protocol",
+          "auth_key": "Authentication key",
+          "priv_protocol": "Privacy protocol",
+          "priv_key": "Privacy key"
+        }
+      },
+      "reconfigure": {
+        "title": "Change connection settings",
+        "data": {
+          "host": "Host",
+          "port": "Port",
+          "snmp_version": "SNMP version",
+          "community": "Community"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "The switch did not answer. Check the address, the community or credentials, and that SNMP is enabled.",
+      "key_too_short": "Keys must be at least 8 characters.",
+      "priv_needs_auth": "Privacy needs an authentication protocol.",
+      "unknown": "Unexpected error, see the log."
+    },
+    "abort": {
+      "already_configured": "This switch is already set up.",
+      "reconfigure_successful": "Settings updated.",
+      "wrong_device": "That address answers as a different switch."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "scan_interval": "Poll interval"
+        }
+      }
+    }
+  },
+  "selector": {
+    "snmp_version": {
+      "options": {
+        "2c": "v2c",
+        "3": "v3"
+      }
+    },
+    "auth_protocol": {
+      "options": {
+        "none": "None",
+        "md5": "MD5",
+        "sha": "SHA-1",
+        "sha256": "SHA-256"
+      }
+    },
+    "priv_protocol": {
+      "options": {
+        "none": "None",
+        "des": "DES",
+        "3des": "3DES",
+        "aes": "AES-128",
+        "aes192": "AES-192",
+        "aes256": "AES-256"
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "port_link": {
+        "name": "Port {port} link"
+      }
+    },
+    "sensor": {
+      "poe_power": {
+        "name": "PoE power"
+      },
+      "poe_energy": {
+        "name": "PoE energy"
+      },
+      "poe_budget": {
+        "name": "PoE budget"
+      },
+      "poe_used_percent": {
+        "name": "PoE budget used"
+      },
+      "cpu": {
+        "name": "CPU"
+      },
+      "memory_used": {
+        "name": "Memory used"
+      },
+      "boot_time": {
+        "name": "Last boot"
+      },
+      "faceplate": {
+        "name": "Faceplate"
+      },
+      "port_poe_power": {
+        "name": "Port {port} PoE power"
+      },
+      "port_poe_energy": {
+        "name": "Port {port} PoE energy"
+      },
+      "port_poe_status": {
+        "name": "Port {port} PoE status",
+        "state": {
+          "disabled": "Disabled",
+          "searching": "Searching",
+          "delivering": "Delivering",
+          "fault": "Fault",
+          "test": "Test",
+          "other_fault": "Other fault",
+          "unknown": "Unknown"
+        }
+      },
+      "port_rx_rate": {
+        "name": "Port {port} receive rate"
+      },
+      "port_tx_rate": {
+        "name": "Port {port} transmit rate"
+      }
+    }
+  }
+}

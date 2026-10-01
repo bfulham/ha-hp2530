@@ -1,0 +1,14 @@
+{
+  "domain": "hp2530",
+  "name": "HP 2530 Switch",
+  "codeowners": ["@bfulham"],
+  "config_flow": true,
+  "dependencies": ["frontend", "http"],
+  "documentation": "https://github.com/bfulham/ha-hp2530",
+  "integration_type": "device",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/bfulham/ha-hp2530/issues",
+  "loggers": ["pyasn1", "pysnmp"],
+  "requirements": ["pysnmp>=7.1.21"],
+  "version": "0.1.0"
+}

@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+.DS_Store
+
+# Reference photos and raw dumps stay local: photos carry metadata, and raw
+# dumps carry MAC addresses and hostnames. Commit fixtures made with
+# tools/make_fixture.py instead.
+*.jpg
+*.jpeg
+*.heic
+*.png
+!custom_components/hp2530/brand/*.png
+dump/

@@ -1,0 +1,5 @@
+pytest-homeassistant-custom-component
+# The integration depends on `frontend` to load its card, and the frontend
+# needs its static files to set up, even in tests.
+home-assistant-frontend
+pysnmp==7.1.27
